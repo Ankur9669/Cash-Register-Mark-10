@@ -1,21 +1,80 @@
+*{
+  text-align: center;
+}
 .container{
   display: flex;
   flex-direction: column;
-  width: 50vw;
   max-width: 560px;
   min-width: 360px;
   margin: auto;
 }
+.label{
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.button{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 1rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  border-style: solid;
+}
 .bill-amount-container{
   display: flex;
   flex-direction: column; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.input-bill-amount{
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.next-button{
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.input-amount-received{
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.submit-button{
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .amount-received-container{
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;  
 }
 .notes-table{
   margin: auto;
-  
+  margin-top: 10px;
+  text-align: center;
+}
+.table-heading{
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
 }
 
