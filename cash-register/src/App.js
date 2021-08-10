@@ -2,9 +2,63 @@ import './App.css';
 import {useState} from "react";
 function App() 
 {
+  const[billAmount, setBillAmount] = useState(0);
+  const[cashGiven, setCashGiven] = useState(0);
   const [isNextClicked, setNextClicked] = useState(false);
   const [isSubmitClicked, setSubmitClicked] = useState(false);
+  const [requiredNumberOf2000Notes, setRequiredNumberOf2000Notes] = useState(0);
+  const [requiredNumberOf1000Notes, setRequiredNumberOf1000Notes] = useState(0);
+  const [requiredNumberOf500Notes, setRequiredNumberOf500Notes] = useState(0);
+  const [requiredNumberOf200Notes, setRequiredNumberOf200Notes] = useState(0);
+  const [requiredNumberOf100Notes, setRequiredNumberOf100Notes] = useState(0);
+  const [requiredNumberOf50Notes, setRequiredNumberOf50Notes] = useState(0);
+  const [requiredNumberOf20Notes, setRequiredNumberOf20Notes] = useState(0);
+  const [requiredNumberOf10Notes, setRequiredNumberOf10Notes] = useState(0);
+  const [requiredNumberOf5Notes, setRequiredNumberOf5Notes] = useState(0);
+  const [requiredNumberOf2Notes, setRequiredNumberOf2Notes] = useState(0);
+  const [requiredNumberOf1Notes, setRequiredNumberOf1Notes] = useState(0);
 
+  function onNextClicked()
+  {
+    if(billAmount > 0)
+    {
+      setNextClicked(true);
+    }
+    else{
+      alert("Please Enter a valid amount");
+    }  
+  }
+
+  function onSubmitClicked()
+  {
+    let temp = cashGiven;
+    if(temp > billAmount)
+    {
+      let index = 0;
+      let notesArray = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
+      let numberOfNotesArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      //console.log(temp - notesArray[index]);
+      while(temp > 0 && index < 10)
+      {
+        while(temp > notesArray[index])
+        {
+          temp = temp - notesArray[index];
+          numberOfNotesArray[index]++;
+          console.log(numberOfNotesArray);
+        }
+        index++;
+        console.log("index is" + index);
+      }
+      console.log(numberOfNotesArray);
+      setSubmitClicked(true);
+    }
+    else{
+      alert("Please Enter a valid amount");
+    }
+  }
+
+  
+  
   return (
     <div className="App">
       <div className = "container">
@@ -16,15 +70,15 @@ function App()
         
         <div className = "bill-amount-container">
           <label for = "bill-amount" className = "label">Bill Amount</label>
-          <input type = "number" id = "bill-amount" className = "input-bill-amount"></input>
-          <button onClick = {() => setNextClicked(true)} className = "button">Next</button>
+          <input type = "number" id = "bill-amount" className = "input-bill-amount" onChange = {(e) => setBillAmount(e.target.value)}></input>
+          <button onClick = {() => onNextClicked()} className = "button">Next</button>
         </div>
 
         {isNextClicked == true && 
         <div className = "amount-received-container">
           <label for = "amount-received" className = "label">Cash Given</label>
-          <input type = "number" id = "amount-received" className = "input-amount-received"></input>
-          <button onClick = {() => setSubmitClicked(true)} className = "button">Submit</button>
+          <input type = "number" id = "amount-received" className = "input-amount-received" onChange = {(e) => setCashGiven(e.target.value)}></input>
+          <button onClick = {() => onSubmitClicked()} className = "button">Submit</button>
         </div>
         }
         
@@ -39,47 +93,43 @@ function App()
             </tr>
             <tr>
                <th>2000</th>
-               <td>0</td>
-            </tr>
-            <tr>
-               <th>1000</th>
-               <td>0</td>
+               <td>{requiredNumberOf2000Notes}</td>
             </tr>
             <tr>
                <th>500</th>
-               <td>0</td>
+               <td>{requiredNumberOf500Notes}</td>
             </tr>
             <tr>
                <th>200</th>
-               <td>0</td>
+               <td>{requiredNumberOf200Notes}</td>
             </tr>
             <tr>
                <th>100</th>
-               <td>0</td>
+               <td>{requiredNumberOf100Notes}</td>
             </tr>
             <tr>
                <th>50</th>
-               <td>0</td>
+               <td>{requiredNumberOf50Notes}</td>
             </tr>
             <tr>
                <th>20</th>
-               <td>0</td>
+               <td>{requiredNumberOf20Notes}</td>
             </tr>
             <tr>
                <th>10</th>
-               <td>0</td>
+               <td>{requiredNumberOf10Notes}</td>
             </tr>
             <tr>
                <th>5</th>
-               <td>0</td>
+               <td>{requiredNumberOf5Notes}</td>
             </tr>
             <tr>
                <th>2</th>
-               <td>0</td>
+               <td>{requiredNumberOf2Notes}</td>
             </tr>
             <tr>
                <th>1</th>
-               <td>0</td>
+               <td>{requiredNumberOf1Notes}</td>
             </tr>
             </tbody> 
           </table>
