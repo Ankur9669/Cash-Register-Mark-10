@@ -43,7 +43,7 @@ function App()
               <td>0</td>
               <td>0</td>
               <td>0</td>
-              <td>0</td>
+              <td></td>
             </tr>
             <tr>
               <th>Note</th>
