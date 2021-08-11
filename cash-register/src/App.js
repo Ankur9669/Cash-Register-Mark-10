@@ -73,7 +73,7 @@ function App()
   return (
     <div className="App">
       <div className = "container">
-        <h1 className = "app-heading">Cash Register Manager</h1>
+        <h1 className = "app-heading">Cash Register Manager(Mark 10)</h1>
         <p className = "app-description">Enter the bill amount and cash given by the customer 
           and know minimum number of notes to return.
         </p>
