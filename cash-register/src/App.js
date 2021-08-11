@@ -7,7 +7,6 @@ function App()
   const [isNextClicked, setNextClicked] = useState(false);
   const [isSubmitClicked, setSubmitClicked] = useState(false);
   const [requiredNumberOf2000Notes, setRequiredNumberOf2000Notes] = useState(0);
-  const [requiredNumberOf1000Notes, setRequiredNumberOf1000Notes] = useState(0);
   const [requiredNumberOf500Notes, setRequiredNumberOf500Notes] = useState(0);
   const [requiredNumberOf200Notes, setRequiredNumberOf200Notes] = useState(0);
   const [requiredNumberOf100Notes, setRequiredNumberOf100Notes] = useState(0);
@@ -17,7 +16,7 @@ function App()
   const [requiredNumberOf5Notes, setRequiredNumberOf5Notes] = useState(0);
   const [requiredNumberOf2Notes, setRequiredNumberOf2Notes] = useState(0);
   const [requiredNumberOf1Notes, setRequiredNumberOf1Notes] = useState(0);
-
+  const[totalRequiredNotes, setTotalRequiredNotes] = useState(0);
   function onNextClicked()
   {
     if(billAmount > 0)
@@ -31,25 +30,37 @@ function App()
 
   function onSubmitClicked()
   {
-    let temp = cashGiven;
-    if(temp > billAmount)
+    let temp = cashGiven;   
+    let totalRequiredNotes = 0; 
+    if(parseInt(temp, 10) > parseInt(billAmount, 10))
     {
       let index = 0;
       let notesArray = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
       let numberOfNotesArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      //console.log(temp - notesArray[index]);
+      temp = temp - billAmount;
+      
+      //This is the logic for calculating the minimum number of notes required
       while(temp > 0 && index < 10)
       {
-        while(temp > notesArray[index])
+        while(temp >= notesArray[index])
         {
           temp = temp - notesArray[index];
           numberOfNotesArray[index]++;
-          console.log(numberOfNotesArray);
+          totalRequiredNotes++;
         }
         index++;
-        console.log("index is" + index);
       }
-      console.log(numberOfNotesArray);
+      setRequiredNumberOf2000Notes(numberOfNotesArray[0]);
+      setRequiredNumberOf500Notes(numberOfNotesArray[1]);
+      setRequiredNumberOf200Notes(numberOfNotesArray[2]);
+      setRequiredNumberOf100Notes(numberOfNotesArray[3]);
+      setRequiredNumberOf50Notes(numberOfNotesArray[4]);
+      setRequiredNumberOf20Notes(numberOfNotesArray[5]);
+      setRequiredNumberOf10Notes(numberOfNotesArray[6]);
+      setRequiredNumberOf5Notes(numberOfNotesArray[7]);
+      setRequiredNumberOf2Notes(numberOfNotesArray[8]);
+      setRequiredNumberOf1Notes(numberOfNotesArray[9]);
+      setTotalRequiredNotes(totalRequiredNotes);
       setSubmitClicked(true);
     }
     else{
@@ -69,15 +80,15 @@ function App()
 
         
         <div className = "bill-amount-container">
-          <label for = "bill-amount" className = "label">Bill Amount</label>
-          <input type = "number" id = "bill-amount" className = "input-bill-amount" onChange = {(e) => setBillAmount(e.target.value)}></input>
+          <label for = "bill-amount" className = "label">Bill Amount:</label>
+          <input type = "number" id = "bill-amount" className = "input" onChange = {(e) => setBillAmount(e.target.value)}></input>
           <button onClick = {() => onNextClicked()} className = "button">Next</button>
         </div>
 
         {isNextClicked == true && 
         <div className = "amount-received-container">
-          <label for = "amount-received" className = "label">Cash Given</label>
-          <input type = "number" id = "amount-received" className = "input-amount-received" onChange = {(e) => setCashGiven(e.target.value)}></input>
+          <label for = "amount-received" className = "label">Cash Given:</label>
+          <input type = "number" id = "amount-received" className = "input" onChange = {(e) => setCashGiven(e.target.value)}></input>
           <button onClick = {() => onSubmitClicked()} className = "button">Submit</button>
         </div>
         }
@@ -133,7 +144,7 @@ function App()
             </tr>
             </tbody> 
           </table>
-          <h1>Total Required Notes Are:</h1>
+          <h1>Total Required Notes Are: {totalRequiredNotes}</h1>
         </div>
         }
       </div>

@@ -4,6 +4,7 @@
 .container{
   display: flex;
   flex-direction: column;
+  background-color: #bed911;
   max-width: 560px;
   min-width: 360px;
   margin: auto;
@@ -16,9 +17,14 @@
   margin-bottom: 5px;
 }
 .button{
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 5px;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -36,6 +42,8 @@
 
 .input-bill-amount{
   padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -44,8 +52,17 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.input{
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 .input-amount-received{
   padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
