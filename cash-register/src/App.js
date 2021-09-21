@@ -32,7 +32,7 @@ function App()
   {
     let temp = cashGiven;   
     let totalRequiredNotes = 0; 
-    if(parseInt(temp, 10) > parseInt(billAmount, 10))
+    if(parseInt(temp, 10) >= parseInt(billAmount, 10))
     {
       let index = 0;
       let notesArray = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
@@ -40,7 +40,7 @@ function App()
       temp = temp - billAmount;
       
       //This is the logic for calculating the minimum number of notes required
-      while(temp > 0 && index < 10)
+      while(temp >= 0 && index < 10)
       {
         while(temp >= notesArray[index])
         {
